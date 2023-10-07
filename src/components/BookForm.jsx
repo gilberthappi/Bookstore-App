@@ -1,9 +1,8 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
-/* eslint-disable import/no-extraneous-dependencies */
 import React, { useState } from 'react';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import PropTypes from 'prop-types';
 
-function BookForm({ onAddBook }) {
+const BookForm = ({ onAdd }) => {
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');
 
@@ -12,46 +11,35 @@ function BookForm({ onAddBook }) {
     const newBook = {
       title,
       author,
-      // Add other book details as needed
+      id: Date.now(),
     };
-    onAddBook(newBook);
+    onAdd(newBook);
     setTitle('');
     setAuthor('');
   };
 
   return (
-    <div>
-      <h1>Add a Book</h1>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="title">Title:</label>
-          <input
-            type="text"
-            id="title"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-          />
-        </div>
-        <div>
-          <label htmlFor="author">Author:</label>
-          <input
-            type="text"
-            id="author"
-            value={author}
-            onChange={(e) => setAuthor(e.target.value)}
-          />
-        </div>
-        {/* Add other input fields for book details */}
-        <div>
-          <button type="submit">Add Book</button>
-        </div>
-      </form>
-    </div>
+    <form onSubmit={handleSubmit}>
+      <h3>Add a new book</h3>
+      <input
+        type="text"
+        placeholder="Book Title"
+        value={title}
+        onChange={(e) => setTitle(e.target.value)}
+      />
+      <input
+        type="text"
+        placeholder="Author"
+        value={author}
+        onChange={(e) => setAuthor(e.target.value)}
+      />
+      <button type="submit">Add a Book</button>
+    </form>
   );
-}
+};
 
 BookForm.propTypes = {
-  onAddBook: PropTypes.func.isRequired,
+  onAdd: PropTypes.func.isRequired,
 };
 
 export default BookForm;

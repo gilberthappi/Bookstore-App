@@ -1,30 +1,22 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import PropTypes from 'prop-types';
-import Book from './Book';
+import BookIndividual from './BookIndividual';
 
-function BookList({ books, onDelete }) {
-  return (
-    <div>
-      <h1>Book List</h1>
-      <ul>
-        {books.map((book) => (
-          <li key={book.id}>
-            <Book book={book} onDelete={onDelete} />
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-}
+const BookList = ({ books, onDelete }) => (
+  <div>
+    {books.map((book) => (
+      <BookIndividual key={book.id} book={book} onDelete={onDelete} />
+    ))}
+  </div>
+);
 
 BookList.propTypes = {
   books: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.number,
-      title: PropTypes.string,
-      author: PropTypes.string,
-      // Add other prop types for book details
+      id: PropTypes.number.isRequired,
+      title: PropTypes.string.isRequired,
+      author: PropTypes.string.isRequired,
     }),
   ).isRequired,
   onDelete: PropTypes.func.isRequired,
