@@ -1,5 +1,6 @@
+/* eslint-disable no-undef */
 import { configureStore } from '@reduxjs/toolkit';
-import bookReducer from './Books/books';
+// import bookReducer from './Books/books';
 import categoriesReducer from './Categories/categories';
 
 const store = configureStore({
