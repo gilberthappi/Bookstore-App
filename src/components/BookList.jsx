@@ -1,6 +1,7 @@
+// components/BookList.jsx
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getBooks, removeBook } from '../redux/books/booksSlice';
+import { fetchBooks, removeBook } from '../redux/books/booksSlice';
 
 import BookIndividual from './BookIndividual';
 import BookForm from './BookForm';
@@ -10,7 +11,7 @@ const BookList = () => {
   const books = useSelector((state) => state.books);
 
   useEffect(() => {
-    dispatch(getBooks());
+    dispatch(fetchBooks());
   }, [dispatch]);
 
   const handleDelete = (bookId) => {
