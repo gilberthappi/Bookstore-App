@@ -1,16 +1,38 @@
-import { Routes, Route } from 'react-router-dom';
-import Header from './components/Header';
-import Categories from './components/Categories';
-import Books from './components/Books';
+/* eslint-disable import/extensions */
+/* eslint-disable import/no-unresolved */
+/* eslint-disable no-unused-vars */
+import React from 'react';
 import './App.css';
+import {
+  BrowserRouter as Router, Route, Routes,
+} from 'react-router-dom';
+import Navigation from './components/routes/Navigation';
+import BookList from './components/BookList';
+// import BookForm from './components/BookForm';
+import Home from './components/routes/Books';
+import Categories from './components/routes/Authors';
 
-const App = () => (
-  <div className="App">
-    <Header />
-    <Routes>
-      <Route path="/Categories" element={<Categories />} />
-      <Route path="/" element={<Books />} />
-    </Routes>
-  </div>
-);
+function App() {
+  const [books, setBooks] = React.useState([]);
+
+  const handleDeleteBook = (bookId) => {
+    setBooks((prevBooks) => prevBooks.filter((book) => book.id !== bookId));
+  };
+
+  return (
+    <Router>
+      <div>
+        <div className="part1">
+          <Home />
+          <Navigation />
+        </div>
+        <Routes>
+          <Route path="/" element={<BookList books={books} onDelete={handleDeleteBook} />} />
+          <Route path="/categories" element={<Categories />} />
+        </Routes>
+      </div>
+    </Router>
+  );
+}
+
 export default App;
