@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-one-expression-per-line */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
@@ -8,16 +9,14 @@ const BookIndividual = ({ book, onDelete }) => {
 
   const handleDelete = () => {
     dispatch(removeBook(book.item_id));
-    onDelete(book.item_id);
+    onDelete(book.item_id); // Pass the book ID to onDelete
   };
 
   return (
     <div className="info">
       <h2>{book.title}</h2>
       <p>
-        Author:
-        {' '}
-        {book.author}
+        Author: {book.author}
       </p>
       <button type="button" className="btn" onClick={handleDelete}>
         Delete

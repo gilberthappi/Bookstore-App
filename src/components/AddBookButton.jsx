@@ -1,6 +1,9 @@
+/* eslint-disable import/order */
+/* eslint-disable import/no-extraneous-dependencies */
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addBook } from '../redux/books/booksSlice';
+import { v4 as uuidv4 } from 'uuid'; // Import uuid
 
 const AddBookButton = () => {
   const [title, setTitle] = useState('');
@@ -12,7 +15,7 @@ const AddBookButton = () => {
     const newBook = {
       title,
       author,
-      id: Date.now().toString(),
+      item_id: uuidv4(), // Generate a unique ID using uuid
     };
 
     dispatch(addBook(newBook));
