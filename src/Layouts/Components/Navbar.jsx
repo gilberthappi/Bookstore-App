@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 const Navbar = () => (
   <header>
     <nav>
-      <h1>Bookstore</h1>
+      <h1>Book Store CMS</h1>
       <ul>
         <li>
           <NavLink to="/">Books</NavLink>

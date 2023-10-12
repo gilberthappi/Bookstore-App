@@ -13,11 +13,11 @@ const BookList = () => (
         </tr>
       </thead>
       <Book
-        title="One punch"
-        author="Rocky Balboa"
+        title="The Pilgrim's Progress"
+        author="John Bunyan"
         button="Remove"
       />
-      <Book title="way to rich" author="Don lee" button="Remove" />
+      <Book title="Robinson Crusoe" author="Daniel Defoe" button="Remove" />
     </table>
     <Form />
   </>
