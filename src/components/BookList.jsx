@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { removeBook } from '../redux/books/booksSlice';
 
 import BookIndividual from './BookIndividual';
-import BookForm from './BookForm';
+import AddBookButton from './AddBookButton';
 
 const BookList = () => {
   const dispatch = useDispatch();
@@ -16,9 +16,11 @@ const BookList = () => {
   return (
     <div>
       {books.map((book) => (
-        <BookIndividual key={book.item_id} book={book} onDelete={handleDelete} />
+        <div key={book.item_id}>
+          <BookIndividual book={book} onDelete={handleDelete} />
+        </div>
       ))}
-      <BookForm />
+      <AddBookButton />
     </div>
   );
 };
