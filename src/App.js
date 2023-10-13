@@ -6,8 +6,8 @@ import {
 import Navigation from './components/routes/Navigation';
 import BookList from './components/BookList';
 // import BookForm from './components/BookForm';
-import Home from './components/routes/Books';
 import Categories from './components/routes/Authors';
+import './style.css';
 
 function App() {
   const [books, setBooks] = React.useState([]);
@@ -18,15 +18,18 @@ function App() {
 
   return (
     <Router>
-      <div>
-        <div className="part1">
-          <Home />
-          <Navigation />
+      <div className="wrapper">
+        <div className="blureffect">
+          <div className="content-main">
+            <div className="page center">
+              <Navigation />
+            </div>
+            <Routes>
+              <Route path="/" element={<BookList books={books} onDelete={handleDeleteBook} />} />
+              <Route path="/categories" element={<Categories />} />
+            </Routes>
+          </div>
         </div>
-        <Routes>
-          <Route path="/" element={<BookList books={books} onDelete={handleDeleteBook} />} />
-          <Route path="/categories" element={<Categories />} />
-        </Routes>
       </div>
     </Router>
   );
