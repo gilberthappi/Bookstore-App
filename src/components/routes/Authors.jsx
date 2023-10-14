@@ -3,7 +3,7 @@ import '../../App.css';
 
 const Categories = () => (
   <div>
-    <h2>Under construction</h2>
+    <h2 className="category-style">Under construction</h2>
   </div>
 );
 
